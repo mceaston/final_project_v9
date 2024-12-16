@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure</title>
+
+<!-- AI Styles -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #story {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        #story-image {
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+
+<!-- My Styles -->
+
+    <style>
+
+        a{
+            color: black;
+            text-decoration: none;
+
+        }
+
+        a:hover{
+            text-decoration: underline;
+            color: black;
+        }
+
+        a:visited{
+
+            color: black;
+            text-decoration: none;
+
+        }
+
+        .bgimage{
+
+            background-image: url(assets/telluride.jpg);
+            background-size: cover;
+
+        }
+
+        .box1{
+
+            padding: 2px;
+            background-color: white;
+            border: 1px;
+            border-color: gold;
+
+        }
+
+        .box2{
+
+            padding: 3px;
+            justify-content: center;
+
+        }
+
+    </style>
+
+</head>
+<body class="bgimage">
+
+    <a href="../resume/Final_Resume.html" class="box1" target="_blank">Return to Resume</a>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="box2">
+        <div class="container">
+            <h1 style="font-family: papyrus;">The Adventure of Lifetime</h1>
+            <p id="story" style="font-family: papyrus;">You are standing at a fork in the road. Do you go left towards the forest or right towards the mountains?</p>
+            <img id="story-image" src="" alt="" style="display:none;">
+            <button onclick="chooseOption('forest')">Go to the Forest</button>
+            <button onclick="chooseOption('mountains')">Go to the Mountains</button>
+        </div>
+    </div>
+
+    <script>
+
+        const storyElements = {
+            start: {
+                text: "You are standing at a fork in the road. Do you go left towards the forest or right towards the mountains?",
+                image: "",
+                options: {
+                    forest: "Go to the Forest",
+                    mountains: "Go to the Mountains"
+                }
+            },
+            forest: {
+                text: "You enter the dark, mysterious forest. You hear a rustling sound. Do you investigate or keep walking?",
+                image: "assets/forest.jpg",
+                options: {
+                    investigate: "Investigate the sound",
+                    keepWalking: "Keep walking"
+                }
+            },
+            mountains: {
+                text: "You hike up the rugged mountain path and come across a cave. Do you enter the cave or continue climbing?",
+                image: "assets/mountains.jpg",
+                options: {
+                    enterCave: "Enter the Cave",
+                    keepClimbing: "Keep Climbing"
+                }
+            },
+            investigate: {
+                text: "You find a friendly fox who leads you to a hidden treasure. The end!",
+                image: "assets/fox.jpg",
+                options: {}
+            },
+            keepWalking: {
+                text: "You safely make it out of the forest and find a peaceful village. The end!",
+                image: "assets/village.jpg",
+                options: {}
+            },
+            enterCave: {
+                text: "Inside the cave, you discover ancient drawings that tell a story of a lost civilization. The end!",
+                image: "assets/cave.jpg",
+                options: {}
+            },
+            keepClimbing: {
+                text: "You reach the mountain peak and see a breathtaking view of the world below. The end!",
+                image: "assets/peak.jpg",
+                options: {}
+            },
+            // Add more steps for each path
+            foxTreasure: {
+                text: "The fox leads you to an ancient tree with hidden inscriptions. Do you decipher them or dig at the base?",
+                image: "assets/tree.jpg",
+                options: {
+                    decipher: "Decipher the inscriptions",
+                    dig: "Dig at the base"
+                }
+            },
+            decipher: {
+                text: "The inscriptions reveal a secret about the forest's origin. You become its guardian. The end!",
+                image: "assets/guardian.jpg",
+                options: {}
+            },
+            dig: {
+                text: "You find an ancient artifact of unimaginable power. You are now a legend. The end!",
+                image: "assets/artifact.jpg",
+                options: {}
+            }
+        };
+
+        function chooseOption(option) {
+            const story = storyElements[option];
+            document.getElementById('story').innerText = story.text;
+
+            const storyImage = document.getElementById('story-image');
+            if (story.image) {
+                storyImage.src = story.image;
+                storyImage.style.display = 'block';
+            } else {
+                storyImage.style.display = 'none';
+            }
+
+            const container = document.querySelector('.container');
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(button => button.remove());
+
+            for (const key in story.options) {
+                const newButton = document.createElement('button');
+                newButton.innerText = story.options[key];
+                newButton.onclick = () => chooseOption(key);
+                container.appendChild(newButton);
+            }
+        }
+    </script>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    
+    <br>
+
+
+    <a href="game2.html" class="box1">Play Again</a>
+
+</body>
+</html>

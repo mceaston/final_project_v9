@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Fact Generator</title>
+    
+    <!-- AI Generated Styles -->
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #fact {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+
+    
+
+</head>
+<body class="bgimage">
+    
+    <a href="../resume/Final_Resume.html">Return To Resume</a>
+        
+        <br>
+        <br>
+
+    
+    <div class="container">
+        <h1>Fun Fact Generator</h1>
+        <p>Click the button to learn a fun fact!</p>
+        <button onclick="generateFact()">Get Fun Fact</button>
+        <div id="fact"></div>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.",
+            "Octopuses have three hearts and blue blood.",
+            "Bananas are berries, but strawberries are not.",
+            "A group of flamingos is called a 'flamboyance.'",
+            "Sharks existed before trees—they've been around for over 400 million years.",
+            "Wombat poop is cube-shaped to prevent it from rolling away.",
+            "There's enough DNA in the human body to stretch from the sun to Pluto and back—17 times!",
+            "The Eiffel Tower can grow more than six inches during the summer due to heat expansion.",
+            "Sea otters hold hands while sleeping to keep from drifting apart.",
+            "Sloths can hold their breath longer than dolphins—up to 40 minutes."
+        ];
+
+        function generateFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact').innerText = facts[randomIndex];
+        }
+    </script>
+</body>
+</html>
